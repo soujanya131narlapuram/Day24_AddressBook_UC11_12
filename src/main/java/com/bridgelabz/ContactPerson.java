@@ -3,11 +3,13 @@ package com.bridgelabz;
 public class ContactPerson {
     private String name;
     private String city;
+    private String state;
     private int age;
 
-    public ContactPerson(String name, String city, int age) {
+    public ContactPerson(String name, String city, String state, int age) {
         this.name = name;
         this.city = city;
+        this.state = state;
         this.age = age;
     }
 
@@ -17,6 +19,10 @@ public class ContactPerson {
 
     public String getCity() {
         return city;
+    }
+
+    public String getState() {
+        return state;
     }
 
     public int getAge() {
