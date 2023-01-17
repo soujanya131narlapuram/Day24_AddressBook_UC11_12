@@ -19,8 +19,8 @@ public class AddressBookMain {
             System.out.println("1. Create Address Book");
             System.out.println("2. Add Contact");
             System.out.println("3. View Contacts");
-            System.out.println("4. Search Contact by City");
-            System.out.println("5. Search Contact by State");
+            System.out.println("4. Get the count of persons by City");
+            System.out.println("5. Get the count of persons by State");
             System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
             int choice = input.nextInt();
@@ -81,35 +81,16 @@ public class AddressBookMain {
             else if(choice == 4) {
                 System.out.print("Enter the city name: ");
                 String city = input.nextLine();
-                ArrayList<ContactPerson> result = cityDict.get(city);
-                if(result != null && result.size() > 0) {
-                    System.out.println("Search results:");
-                    for(ContactPerson contact : result) {
-                        System.out.println("Name: " + contact.getName());
-                        System.out.println("City: " + contact.getCity());
-                        System.out.println("State: " + contact.getState());
-                        System.out.println("Age: " + contact.getAge());
-                    }
-                } else {
-                    System.out.println("No contact found in city " + city);
-                }
+                long count = cityDict.get(city) != null ? cityDict.get(city).stream().count() : 0;
+                System.out.println("Number of contacts found in city " + city + ": " + count);
             }
             else if(choice == 5) {
                 System.out.print("Enter the state name: ");
                 String state = input.nextLine();
-                ArrayList<ContactPerson> result = stateDict.get(state);
-                if(result != null && result.size() > 0) {
-                    System.out.println("Search results:");
-                    for(ContactPerson contact : result) {
-                        System.out.println("Name: " + contact.getName());
-                        System.out.println("City: " + contact.getCity());
-                        System.out.println("State: " + contact.getState());
-                        System.out.println("Age: " + contact.getAge());
-                    }
-                } else {
-                    System.out.println("No contact found in state " + state);
-                }
+                long count = stateDict.get(state) != null ? stateDict.get(state).stream().count() : 0;
+                System.out.println("Number of contacts found in state " + state + ": " + count);
             }
+
             else if(choice == 6) {
                 break;
             }
