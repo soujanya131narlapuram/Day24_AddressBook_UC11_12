@@ -2,6 +2,8 @@ package com.bridgelabz;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 public class AddressBookMain {
     private static HashMap<String, AddressBook> addressBooks;
 
@@ -12,7 +14,8 @@ public class AddressBookMain {
             System.out.println("1. Create Address Book");
             System.out.println("2. Add Contact");
             System.out.println("3. View Contacts");
-            System.out.println("4. Exit");
+            System.out.println("4. Search Contact by City");
+            System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
             int choice = input.nextInt();
             input.nextLine();
@@ -59,6 +62,24 @@ public class AddressBookMain {
                 }
             }
             else if(choice == 4) {
+                System.out.print("Enter the city name: ");
+                String city = input.nextLine();
+                ArrayList<ContactPerson> result = addressBooks.values().stream()
+                        .flatMap(ab -> ab.getContacts().stream())
+                        .filter(c -> c.getCity().equalsIgnoreCase(city))
+                        .collect(Collectors.toCollection(ArrayList::new));
+                if(result.size() > 0) {
+                    System.out.println("Search results:");
+                    for(ContactPerson contact : result) {
+                        System.out.println("Name: " + contact.getName());
+                        System.out.println("City: " + contact.getCity());
+                        System.out.println("Age: " + contact.getAge());
+                    }
+                } else {
+                    System.out.println("No contact found in city " + city);
+                }
+            }
+            else if(choice == 5) {
                 break;
             }
         }
