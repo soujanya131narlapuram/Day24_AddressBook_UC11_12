@@ -29,6 +29,11 @@ public class ContactPerson {
         return age;
     }
 
+
+    @Override
+    public String toString() {
+        return "Name: " + name + "\nCity: " + city + "\nState: " + state + "\nAge: " + age;
+    }
     @Override
     public boolean equals(Object obj) {
         if(obj == null) return false;

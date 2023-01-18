@@ -25,5 +25,8 @@ public class AddressBook {
     public String getName() {
         return name;
     }
+    public void sortContacts() {
+        contacts.sort((c1, c2) -> c1.getName().compareTo(c2.getName()));
+    }
 }
 
