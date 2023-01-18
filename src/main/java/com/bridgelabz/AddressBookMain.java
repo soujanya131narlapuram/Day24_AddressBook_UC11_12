@@ -77,12 +77,20 @@ public class AddressBookMain {
                     System.out.println("Address book not found!");
                 }
             }
-            else if(choice == 4) {
+            else if(choice == 3) {
                 System.out.print("Enter address book name: ");
                 String addressBookName = input.nextLine();
                 AddressBook addressBook = addressBooks.get(addressBookName);
                 if(addressBook != null) {
-                    addressBook.sortContacts();
+                    System.out.println("1. Sort by City");
+                    System.out.println("2. Sort by State");
+                    int sortChoice = input.nextInt();
+                    input.nextLine();
+                    if(sortChoice == 1) {
+                        addressBook.sortContactsByCity();
+                    } else if(sortChoice == 2) {
+                        addressBook.sortContactsByState();
+                    }
                     addressBook.getContacts().forEach(System.out::println);
                 }
                 else {

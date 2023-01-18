@@ -28,5 +28,11 @@ public class AddressBook {
     public void sortContacts() {
         contacts.sort((c1, c2) -> c1.getName().compareTo(c2.getName()));
     }
+    public void sortContactsByCity() {
+        contacts.sort((c1, c2) -> c1.getCity().compareTo(c2.getCity()));
+    }
+    public void sortContactsByState() {
+        contacts.sort((c1, c2) -> c1.getState().compareTo(c2.getState()));
+    }
 }
 
