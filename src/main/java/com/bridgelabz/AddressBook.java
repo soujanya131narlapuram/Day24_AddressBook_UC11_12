@@ -14,7 +14,7 @@ public class AddressBook {
             contacts.add(contact);
             System.out.println("Contact added to '" + name + "'!");
         }else{
-            System.out.println("Contact already exists in '" + name + "'!");
+            System.out.println("Contact already exists in the '" + name + "'!");
         }
     }
 
